@@ -2,10 +2,10 @@ import json
 import random
 import os
 
-# File to store tasks
+
 TASKS_FILE = "tasks.json"
 
-# Motivational Quotes
+
 QUOTES = [
     "Believe in yourself and all that you are!",
     "Your only limit is your mind.",
@@ -28,7 +28,7 @@ def save_tasks(tasks):
 
 def show_quote():
     """Show a random motivational quote."""
-    print("\n🌟 Daily Motivation 🌟")
+    print("\n Daily Motivation ")
     print(random.choice(QUOTES))
     print("-" * 30)
 
@@ -37,7 +37,7 @@ def add_task(task):
     tasks = load_tasks()
     tasks.append({"task": task, "done": False})
     save_tasks(tasks)
-    print(f"✅ Task added: {task}")
+    print(f" Task added: {task}")
 
 def view_tasks():
     """View all tasks."""
@@ -48,13 +48,13 @@ def view_tasks():
     print("\n📌 Your Tasks:")
     completed = sum(1 for t in tasks if t["done"])
     for i, t in enumerate(tasks, 1):
-        status = "✅" if t["done"] else "❌"
+        status = "" if t["done"] else ""
         print(f"{i}. {t['task']} [{status}]")
     
     # Show progress
     if tasks:
         progress = (completed / len(tasks)) * 100
-        print(f"\n📊 Progress: {progress:.2f}% completed")
+        print(f"\n Progress: {progress:.2f}% completed")
 
 def mark_done(index):
     """Mark a task as done."""
@@ -62,9 +62,9 @@ def mark_done(index):
     if 0 <= index < len(tasks):
         tasks[index]["done"] = True
         save_tasks(tasks)
-        print(f"🎉 Task marked as done: {tasks[index]['task']}")
+        print(f" Task marked as done: {tasks[index]['task']}")
     else:
-        print("❌ Invalid task number!")
+        print("Invalid task number!")
 
 def delete_task(index):
     """Delete a task."""
